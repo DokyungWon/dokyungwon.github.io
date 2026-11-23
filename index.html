@@ -54,14 +54,21 @@ h1 .ko{display:block;font-family:Figtree,sans-serif;font-weight:500;font-size:cl
 .portrait{position:relative;width:clamp(140px,13vw,184px);aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:4px solid #F6E6E0;background:#F6E6E0;display:grid;place-items:center;align-self:end;box-shadow:8px 8px 0 var(--gold)}
 .portrait span{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:46px;color:#7A1025}
 .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.albums{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px}
+.arow{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px;margin-bottom:24px}
+.arow .lede{margin:0}
+.anav{display:flex;gap:10px}
+.anav button{width:44px;height:44px;border-radius:50%;border:2px solid #7A1025;background:#fff;color:#7A1025;font-size:24px;line-height:1;cursor:pointer}
+.anav button:hover:not(:disabled),.anav button:focus-visible{background:#7A1025;color:#fff;outline:none}
+.anav button:disabled{opacity:.3;cursor:default}
+.albums{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:14px;scrollbar-width:thin;scrollbar-color:#C7A9A0 transparent}
+.alb{flex:0 0 min(560px,86%);scroll-snap-align:start}
 .alb h3{font-size:20px;margin:0}
 .alb .meta{color:var(--soft);font-size:15px;margin:2px 0 12px}
 .car{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#F6E6E0;touch-action:pan-y;outline-offset:3px}
 .car:focus-visible{outline:3px solid var(--gold)}
 .track{display:flex;height:100%;transition:transform .45s ease}
 .slide{flex:0 0 100%;height:100%;position:relative}
-.slide img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none}
+.slide img{width:100%;height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
 .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:#7A1025;font-size:14px}
 .ph svg{display:block;margin:0 auto 8px}
 .cbtn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#7A1025;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(31,26,28,.25)}
@@ -73,7 +80,7 @@ h1 .ko{display:block;font-family:Figtree,sans-serif;font-weight:500;font-size:cl
 .dots button{width:26px;height:26px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
 .dots button::after{content:"";width:9px;height:9px;border-radius:5px;background:#C7A9A0;transition:width .2s}
 .dots button[aria-current=true]::after{background:#7A1025;width:20px}
-@media(prefers-reduced-motion:reduce){.track{transition:none}}
+@media(prefers-reduced-motion:reduce){.track{transition:none}.albums{scroll-behavior:auto}}
 .field{position:relative;height:clamp(220px,30vw,360px);display:block}
 .field svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 .spike{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite alternate}
@@ -223,8 +230,9 @@ footer h2{color:#fff}
 </div></section>
 
 <section class="band" id="album" style="padding-top:0"><div class="wrap">
-<h2>Album</h2>
-<p class="lede">Moments from my studies and work. Use the arrows or swipe to browse.</p>
+<div class="arow"><div><h2>Album</h2>
+<p class="lede">Moments from my studies and work. Use the arrows or swipe to browse.</p></div>
+<div class="anav"><button type="button" id="aprev" aria-label="Previous album">&#8249;</button><button type="button" id="anext" aria-label="Next album">&#8250;</button></div></div>
 <div class="albums" id="albums"></div>
 </div></section>
 
@@ -320,7 +328,14 @@ car.addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x
 go(0);return el};
 const A=(window.ALBUMS||[]).filter(a=>a&&a.folder);
 if(!A.length)document.getElementById('album').hidden=true;
-Promise.all(A.map(a=>list(a.folder).catch(()=>[]))).then(all=>{A.forEach((a,k)=>box.appendChild(build(a,all[k])))});
+const ap=document.getElementById('aprev'),an=document.getElementById('anext');
+const step=()=>{const c=box.querySelector('.alb');return c?c.getBoundingClientRect().width+28:box.clientWidth};
+const upd=()=>{const max=box.scrollWidth-box.clientWidth;ap.disabled=box.scrollLeft<=4;an.disabled=box.scrollLeft>=max-4;document.querySelector('.anav').hidden=max<=4};
+ap.addEventListener('click',()=>box.scrollBy({left:-step()}));
+an.addEventListener('click',()=>box.scrollBy({left:step()}));
+box.addEventListener('scroll',upd,{passive:true});
+const aro=new ResizeObserver(upd);aro.observe(box);
+Promise.all(A.map(a=>list(a.folder).catch(()=>[]))).then(all=>{A.forEach((a,k)=>box.appendChild(build(a,all[k])));upd()});
 }
 </script>
 </body>

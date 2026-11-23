@@ -32,4 +32,13 @@ window.ALBUMS = [
       "1.jpg": "Wheat plots during the high-temperature treatment trial.",
     },
   },
+  {
+    title: "Conferences",
+    place: "Korean Society of Breeding Science, Busan",
+    date: "2026",
+    folder: "images/conference",
+    captions: {
+      "1.jpg": "Presenting my poster on a heat-responsive PUB E3 ubiquitin ligase.",
+    },
+  },
 ];
