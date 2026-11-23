@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dokyeong Won</title>
+<title>Dokyung Won</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -44,6 +44,11 @@ h1 .ko{display:block;font-family:Figtree,sans-serif;font-weight:500;font-size:cl
 .pitch strong{color:#fff;font-weight:600}
 .status{display:inline-flex;align-items:center;gap:10px;margin-top:16px;background:color-mix(in srgb,var(--heat) 22%,transparent);border:1px solid color-mix(in srgb,var(--heat) 60%,transparent);color:#fff;border-radius:999px;padding:7px 14px;font-size:15px;font-weight:500}
 .status i{width:9px;height:9px;border-radius:50%;background:var(--heat);flex:none}
+.aff{margin:12px 0 0;color:var(--gold);font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:10px;background:var(--gold);color:#1a1404;font-weight:600;text-decoration:none}
+.btn.ghost{background:transparent;color:#fff;border:1px solid color-mix(in srgb,#fff 45%,transparent);overflow-wrap:anywhere}
+.btn:hover,.btn:focus-visible{filter:brightness(1.08);outline:2px solid #fff;outline-offset:2px}
 .field{position:relative;height:clamp(220px,30vw,360px);display:block}
 .field svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 .spike{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite alternate}
@@ -87,21 +92,23 @@ footer h2{color:#fff}
 </head>
 <body>
 <nav><div class="wrap">
-<a class="me" href="#top">Dokyeong Won</a>
+<a class="me" href="#top">Dokyung Won</a>
 <a class="l" href="#research">Research</a>
-<a class="l" href="#writing">Writing &amp; talks</a>
-<a class="l" href="#methods">Methods</a>
-<a class="l" href="#ahead">PhD interests</a>
+<a class="l" href="#outputs">Presentations</a>
+<a class="l" href="#education">Education</a>
+<a class="l" href="#methods">Skills</a>
 <a class="l" href="#contact">Contact</a>
 </div></nav>
 
 <header id="top">
 <div class="band wrap" style="padding-bottom:8px">
 <div class="top">
-<h1>Dokyeong Won<span class="ko">원도경 · M.S. student in plant genetics</span></h1>
+<h1>Dokyung Won<span class="ko">원도경 · M.S. student, Department of Plant Biotechnology, Korea University</span></h1>
 <div>
-<p class="pitch">I study how <strong>wheat</strong> copes with stress — from heat-responsive <strong>U-box E3 ubiquitin ligases</strong> to the host response to <strong>Fusarium head blight</strong>.</p>
+<p class="pitch">I study how <strong>wheat</strong> responds to heat and disease, from a heat-responsive <strong>PUB E3 ubiquitin ligase</strong> that shapes the shift to flowering to the host response to <strong>Fusarium head blight</strong>.</p>
+<p class="aff">CMBT Lab · Advisor: Prof. Yongweon Seo</p>
 <span class="status"><i></i>Applying to PhD programs for Fall 2027</span>
+<div class="cta"><a class="btn" href="cv.pdf">Download CV</a><a class="btn ghost" href="mailto:wdk0610@korea.ac.kr">wdk0610@korea.ac.kr</a></div>
 </div>
 </div>
 </div>
@@ -111,57 +118,76 @@ footer h2{color:#fff}
 <main>
 <section class="band" id="research"><div class="wrap">
 <h2>Research</h2>
-<p class="lede">Three threads, one question: which genes let wheat hold its ground when the environment turns against it, and how can we prove what they do.</p>
+<p class="lede">My interests sit where plant molecular biology meets breeding: how crops sense heat and pathogens at the molecular level, and how those findings, including through genome editing, can make wheat production more stable.</p>
 <div class="plots">
 <article class="plot">
-<div class="tag"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="6" fill="var(--heat)"/><g stroke="var(--heat)" stroke-width="2" stroke-linecap="round"><path d="M11 1v2M11 19v2M1 11h2M19 11h2M4 4l1.5 1.5M16.5 16.5 18 18M4 18l1.5-1.5M16.5 5.5 18 4"/></g></svg>Heat stress · protein function</div>
-<h3>TaPUB16, a heat-responsive U-box E3 ligase</h3>
-<p>I am characterising TaPUB16 from bread wheat on two fronts. In vitro, I express and purify the protein using MBP (pMAL-c5x), His (pET32a) and GST (pGSTag) fusion systems to set up biochemical assays. In planta, I test TaPUB16-overexpressing <i>Arabidopsis</i> lines (OE8, OE10) against wild type under 42 °C heat stress, refining the design to one plant per pot for cleaner statistics.</p>
-<ul class="chips"><li>Protein expression</li><li>Transgenic Arabidopsis</li><li>Thermotolerance assays</li></ul>
+<div class="tag"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="6" fill="var(--heat)"/><g stroke="var(--heat)" stroke-width="2" stroke-linecap="round"><path d="M11 1v2M11 19v2M1 11h2M19 11h2M4 4l1.5 1.5M16.5 16.5 18 18M4 18l1.5-1.5M16.5 5.5 18 4"/></g></svg>NRF project · 2025 – present</div>
+<h3>A heat-responsive PUB E3 ligase and the transition to flowering</h3>
+<p>As part of a National Research Foundation of Korea project on reproductive transition and spikelet development for early-maturing wheat, I lead the functional characterization of a heat-responsive plant U-box (PUB) E3 ubiquitin ligase. The work spans plant transformation, expression analysis, recombinant protein expression with MBP, His and GST fusions, protein interaction assays and heat-stress phenotyping of overexpression lines in <i>Arabidopsis</i>. I am drafting the manuscript.</p>
+<ul class="chips"><li>Transformation</li><li>Protein interaction</li><li>Thermotolerance</li></ul>
 </article>
 <article class="plot">
-<div class="tag"><svg width="22" height="22" viewBox="0 0 22 22"><g fill="var(--gold)"><ellipse cx="11" cy="5" rx="3" ry="4"/><ellipse cx="7" cy="11" rx="3" ry="4"/><ellipse cx="15" cy="11" rx="3" ry="4"/></g><circle cx="15" cy="11" r="2" fill="#c0478a"/><path d="M11 9v12" stroke="var(--leaf)" stroke-width="1.6"/></svg>Plant pathology · RDA project</div>
+<div class="tag"><svg width="22" height="22" viewBox="0 0 22 22"><g fill="var(--gold)"><ellipse cx="11" cy="5" rx="3" ry="4"/><ellipse cx="7" cy="11" rx="3" ry="4"/><ellipse cx="15" cy="11" rx="3" ry="4"/></g><circle cx="15" cy="11" r="2" fill="#c0478a"/><path d="M11 9v12" stroke="var(--leaf)" stroke-width="1.6"/></svg>RDA project · 2025 – present</div>
 <h3>Wheat response to Fusarium head blight</h3>
-<p>Since April 2025 I have worked on a Rural Development Administration project on Fusarium head blight. I inoculate wheat spikes with <i>Fusarium asiaticum</i> spores and follow disease-related gene expression by qRT-PCR, linking host molecular responses to infection progress.</p>
-<ul class="chips"><li>Spore inoculation</li><li>qRT-PCR</li><li>Host–pathogen interaction</li></ul>
+<p>In a Rural Development Administration project on shortening maturity and reducing Fusarium head blight damage, I inoculate wheat with <i>Fusarium asiaticum</i> spores, compare resistance- and susceptibility-associated gene groups, and quantify their expression by qRT-PCR.</p>
+<ul class="chips"><li>Spore inoculation</li><li>qRT-PCR</li><li>Plant–pathogen interaction</li></ul>
 </article>
 <article class="plot">
-<div class="tag"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M2 18 L6 12 L10 14 L14 6 L20 4" fill="none" stroke="var(--heat)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 20h18" stroke="var(--soft)" stroke-width="1.4"/></svg>Transcriptomics · in progress</div>
-<h3>Heat time-course in wheat seedlings</h3>
-<p>I am designing a time-course experiment on two-week-old wheat seedlings: RNA sampled at up to seven time points after heat treatment, with four biological replicates, to map when stress-responsive genes such as the PUB family switch on and off.</p>
-<ul class="chips"><li>Experimental design</li><li>RNA extraction</li><li>Gene expression dynamics</li></ul>
+<div class="tag"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M2 18 L6 12 L10 14 L14 6 L20 4" fill="none" stroke="var(--heat)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 20h18" stroke="var(--soft)" stroke-width="1.4"/></svg>RDA projects · 2025 – present</div>
+<h3>Heat and genetic resources in the field</h3>
+<p>I support two field programs: setting damage criteria for abnormal temperatures across growth stages of winter cereals, where I help run high-temperature treatments, and seed genetic resource conservation, where I help cultivate accessions and record traits. In the lab, I am planning a heat time-course in wheat seedlings to follow when stress-responsive genes switch on and off.</p>
+<ul class="chips"><li>Field trials</li><li>Trait characterization</li><li>Time-course design</li></ul>
 </article>
 </div>
 </div></section>
 
-<section class="band" id="writing" style="padding-top:0"><div class="wrap cols">
+<section class="band" id="outputs" style="padding-top:0"><div class="wrap cols">
 <div>
-<h2>Writing</h2>
-<p class="lede">Manuscripts in preparation.</p>
+<h2>Presentations &amp; writing</h2>
 <ul class="list">
-<li><span class="when">In preparation</span><div><b>A review of E3 ubiquitin ligases in wheat</b><span class="d">Co-author with lab members. I wrote the chapters on classification and genome distribution, abiotic stress responses, and roles in flowering and reproductive development.</span></div></li>
+<li><span class="when">Jul 2026</span><div><b>Functional characterization of a heat-responsive PUB E3 ubiquitin ligase involved in the early vegetative-to-reproductive transition in wheat</b><span class="d">Poster, Korean Society of Breeding Science conference, Busan</span></div></li>
+<li><span class="when">In preparation</span><div><b>Review of E3 ubiquitin ligases in wheat</b><span class="d">Co-author. I wrote the chapters on classification and genome distribution, abiotic stress, and flowering and reproductive development.</span></div></li>
+<li><span class="when">In preparation</span><div><b>Research article on the heat-responsive PUB E3 ligase</b><span class="d">First draft in progress.</span></div></li>
 </ul>
 </div>
 <div>
-<h2>Talks</h2>
-<p class="lede">Graduate seminar, Applied Plant Genetic Engineering (PBG811).</p>
+<h2>Seminar talks</h2>
 <ul class="list">
-<li><span class="when">Nov 2, 2026</span><div><b>New plant breeding techniques: from NPBT to NGT</b><span class="d">Genome editing and the shifting regulatory definitions of new genomic techniques.</span></div></li>
-<li><span class="when">Nov 16, 2026</span><div><b>Synthetic biology for plants</b><span class="d">Design principles and applications of engineered genetic circuits in crops.</span></div></li>
+<li><span class="when">Nov 2026</span><div><b>New plant breeding techniques: from NPBT to NGT</b><span class="d">Applied Plant Genetic Engineering (PBG811), Korea University</span></div></li>
+<li><span class="when">Nov 2026</span><div><b>Synthetic biology for plants</b><span class="d">Applied Plant Genetic Engineering (PBG811), Korea University</span></div></li>
+</ul>
+</div>
+</div></section>
+
+<section class="band" id="education" style="padding-top:0"><div class="wrap cols">
+<div>
+<h2>Education</h2>
+<ul class="list">
+<li><span class="when">2025 – now</span><div><b>M.S., Plant Biotechnology, Korea University</b><span class="d">Plant Genetic Engineering · GPA 4.50 / 4.50</span></div></li>
+<li><span class="when">2024 – 2025</span><div><b>Exchange student, Biology, University of Sussex, UK</b><span class="d">Sep 2024 – Jan 2025</span></div></li>
+<li><span class="when">2019 – 2025</span><div><b>B.S., Biotechnology, Korea University</b><span class="d">College of Life Sciences and Biotechnology · GPA 3.95 / 4.50 · Military service, Republic of Korea Army, 2020 – 2022</span></div></li>
+</ul>
+</div>
+<div>
+<h2>Honors</h2>
+<ul class="list">
+<li><span class="when">2025, 2026</span><div><b>BK21 FOUR Graduate Research Scholarship</b></div></li>
+<li><span class="when">2026</span><div><b>Research Assistant Scholarship</b></div></li>
+<li><span class="when">2025</span><div><b>Graduate School Outstanding Freshman Scholarship</b></div></li>
+<li><span class="when">2025</span><div><b>Teaching Assistant Scholarship</b></div></li>
 </ul>
 </div>
 </div></section>
 
 <section class="band" id="methods" style="padding-top:0"><div class="wrap">
-<h2>Methods at the bench</h2>
-<p class="lede">What I do with my own hands, day to day.</p>
+<h2>Skills</h2>
 <div class="methods">
-<div><h3>Recombinant protein</h3><p>Cloning into pMAL-c5x, pET32a and pGSTag; expression and affinity purification in <i>E. coli</i>.</p></div>
-<div><h3>Gene expression</h3><p>RNA extraction, cDNA synthesis, qRT-PCR design and analysis.</p></div>
-<div><h3>Transgenic plants</h3><p>Phenotyping overexpression lines of <i>Arabidopsis</i> under controlled heat stress.</p></div>
-<div><h3>Plant pathology</h3><p>Culturing <i>Fusarium</i>, spore suspension and spike inoculation of wheat.</p></div>
-<div><h3>Experimental design</h3><p>Replication, randomisation and time-course sampling for stress experiments.</p></div>
-<div><h3>Scientific communication</h3><p>Literature synthesis for review writing; English-language seminar talks.</p></div>
+<div><h3>Molecular biology</h3><p>DNA and RNA extraction, PCR, qPCR, gel electrophoresis, vector cloning.</p></div>
+<div><h3>Protein biochemistry</h3><p>Recombinant expression and purification, SDS-PAGE, protein interaction assays.</p></div>
+<div><h3>Plants and pathogens</h3><p>Plant transformation, <i>Fusarium</i> spore inoculation, field cultivation and trait scoring.</p></div>
+<div><h3>Imaging and culture</h3><p>Bright-field and confocal microscopy, cell culture.</p></div>
+<div><h3>Teaching and outreach</h3><p>TA for Man and Food (GEST045), 2025; career mentoring for secondary-school students; language and culture assistant for Ritsumeikan University visitors.</p></div>
+<div><h3>Languages and certificates</h3><p>TOEFL iBT 5.0 / 6.0 (2026), IELTS 7.0 (2023); Engineer Seeds, HRD Korea (2025).</p></div>
 </div>
 </div></section>
 
@@ -171,8 +197,8 @@ footer h2{color:#fff}
 <p class="q">I want to connect the genes that matter in the field to the mechanisms that explain them.</p>
 </div>
 <div>
-<p>For my PhD I am looking for labs in wheat genetics and plant pathology where I can move between discovering candidate genes and proving their function, whether through genotype–phenotype analysis in populations or through transgenic and genome-edited validation.</p>
-<p>I am especially interested in stress and disease resistance in wheat, and I am keen to build stronger quantitative and computational skills alongside my molecular background.</p>
+<p>For my PhD I am looking for labs in wheat genetics and plant pathology where I can move between finding candidate genes and proving their function, through genotype–phenotype analysis in populations or through transgenic and genome-edited validation.</p>
+<p>I am especially drawn to how crops interact with heat and pathogens, and I am keen to build stronger quantitative and computational skills on top of my molecular background.</p>
 </div>
 </div></section>
 </main>
@@ -183,8 +209,8 @@ footer h2{color:#fff}
 <p>I would be glad to hear from faculty and students working on wheat genetics, stress biology or plant–pathogen interactions.</p>
 </div>
 <div class="contact">
-<p>Email: <a href="mailto:dokyeong.won@example.com">dokyeong.won@example.com</a><br>CV available on request.</p>
-<p class="small">Email address on this page is a placeholder.</p>
+<p><a href="mailto:wdk0610@korea.ac.kr">wdk0610@korea.ac.kr</a><br><a href="cv.pdf">Download CV (PDF)</a></p>
+<p>CMBT Lab, Department of Plant Biotechnology, Korea University<br>Life Sciences Bldg. (West) Rm. 514, 145 Anam-ro, Seongbuk-gu, Seoul, Republic of Korea</p>
 </div>
 </div></footer>
 
