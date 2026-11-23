@@ -7,7 +7,7 @@
 <title>Dokyung Won</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,650&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* VOICE everyday-academic: calm, precise, a little warm; palette chosen by the person
    IDEA a wheat field at a hot sunset, crimson sky over golden spikes
@@ -124,6 +124,25 @@ footer h2{color:#fff}
 @media(max-width:600px){header .top{grid-template-columns:minmax(0,1fr)}.portrait{width:132px}}
 @media(max-width:700px){.cols{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:600px){nav a.l{font-size:14px}.list li{grid-template-columns:minmax(0,1fr);gap:2px}}
+header{background:var(--bg);color:var(--ink)}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,300px);gap:32px 64px;align-items:start;max-width:1240px;margin:0 auto}
+.nm{color:#7A1025;font-size:clamp(44px,6vw,72px);line-height:1.02;margin:0}
+.nm b{font-weight:650}
+.nm{font-weight:300}
+.affil{color:var(--soft);font-size:17px;margin:12px 0 24px}
+.affil a{color:#7A1025;font-weight:600;text-decoration:none}
+.affil a:hover{text-decoration:underline}
+.bio p:not(.affil){font-size:17px;line-height:1.65;max-width:66ch;margin:0 0 14px}
+.bio .status{color:var(--ink);background:#FFF3D1;border:1px solid #FFB000;margin-top:6px}
+.bio .btn.ghost{color:#7A1025;border:2px solid #7A1025;background:#fff}
+.bio .btn.ghost:hover,.bio .btn.ghost:focus-visible{background:#7A1025;color:#fff;outline:none;filter:none}
+.bio .btn:focus-visible{outline:2px solid #7A1025}
+.pcol .portrait{width:100%;aspect-ratio:4/5;border-radius:12px;border:0;box-shadow:none;background:#F6E6E0}
+.pcol .portrait span{font-size:64px}
+.addr{font-size:14.5px;line-height:1.6;color:var(--soft);margin:14px 0 0}
+.addr a{color:#7A1025}
+header .field{height:clamp(160px,20vw,260px)}
+@media(max-width:760px){.about{grid-template-columns:minmax(0,1fr)}.pcol{order:-1;display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:end}.addr{margin:0}}
 </style>
 </head>
 <body>
@@ -138,18 +157,21 @@ footer h2{color:#fff}
 </div></nav>
 
 <header id="top">
-<div class="band wrap" style="padding-bottom:8px">
-<div class="top">
+<div class="band"><div class="about">
+<div class="bio">
+<h1 class="nm"><b>Dokyung</b> <b>Won</b></h1>
+<p class="affil"><a href="https://www.korea.ac.kr">Korea University</a> · Department of Plant Biotechnology · CMBT (Crop Molecular Breeding Team) · M.S. student</p>
+<p>I am an M.S. student in the Department of Plant Biotechnology at Korea University in South Korea, working in the CMBT with Prof. Yongweon Seo. I study how <strong>wheat</strong> responds to heat or pathogens at the molecular level, and how those findings can be applied into wheat breeding.</p>
+<p>My main project is the functional characterization of a heat-responsive <strong>PUB E3 ubiquitin ligase</strong> involved in the shift from vegetative growth to flowering. I also work on the host response to <strong>Fusarium head blight</strong> and help run heat-stress field trials on winter cereals.</p>
+<p>I earned my B.S. in Biotechnology at Korea University and spent an exchange semester studying biology at the University of Sussex in the UK. I am now looking for PhD programs in wheat genetics and plant pathology for Fall 2027.</p>
+<span class="status"><i></i>Looking for PhD programs for Fall 2027</span>
+<div class="cta"><a class="btn" href="cv.pdf">Download CV</a><a class="btn ghost" href="mailto:wdk0610@korea.ac.kr">Email me</a></div>
+</div>
+<aside class="pcol">
 <div class="portrait"><span>DW</span><img id="pimg" alt="Portrait of Dokyung Won" hidden></div>
-<h1>Dokyung Won<span class="ko">원도경 · M.S. student, Department of Plant Biotechnology, Korea University</span></h1>
-<div class="side">
-<p class="pitch">I study how <strong>wheat</strong> responds to heat and disease, from a heat-responsive <strong>PUB E3 ubiquitin ligase</strong> that shapes the shift to flowering to the host response to <strong>Fusarium head blight</strong>.</p>
-<p class="aff">CMBT Lab · Advisor: Prof. Yongweon Seo</p>
-<span class="status"><i></i>Applying to PhD programs for Fall 2027</span>
-<div class="cta"><a class="btn" href="cv.pdf">Download CV</a><a class="btn ghost" href="mailto:wdk0610@korea.ac.kr">wdk0610@korea.ac.kr</a></div>
-</div>
-</div>
-</div>
+<p class="addr">CMBT Lab, Dept. of Plant Biotechnology<br>Life Sciences Bldg. (West), Rm. 514<br>Korea University, 145 Anam-ro<br>Seongbuk-gu, Seoul, Republic of Korea<br><a href="mailto:wdk0610@korea.ac.kr">wdk0610@korea.ac.kr</a></p>
+</aside>
+</div></div>
 <div class="field" aria-hidden="true"><svg id="fieldsvg" preserveAspectRatio="xMidYMax slice" viewBox="0 0 1440 360"></svg></div>
 </header>
 
