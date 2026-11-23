@@ -39,7 +39,7 @@ nav .me{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:18px;margin
 nav a.l{text-decoration:none;font-size:15px;opacity:.85;padding:8px 0;min-height:44px;display:inline-flex;align-items:center}
 nav a.l:hover,nav a.l:focus-visible{opacity:1;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:5px}
 header{background:var(--leaf);color:#F6E6E0}
-header .top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px 48px;align-items:end;padding-bottom:12px}
+header .top{display:grid;grid-template-columns:auto minmax(0,1.3fr) minmax(0,1fr);gap:24px 48px;align-items:end;padding-bottom:12px}
 h1{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:clamp(44px,7vw,84px);line-height:1.02;letter-spacing:-.02em;margin:0}
 h1 .ko{display:block;font-family:Figtree,sans-serif;font-weight:500;font-size:clamp(18px,2vw,22px);letter-spacing:0;color:var(--gold);margin-top:10px}
 .pitch{font-size:clamp(17px,1.6vw,19px);line-height:1.55;margin:0;color:#F6E6E0}
@@ -51,6 +51,29 @@ h1 .ko{display:block;font-family:Figtree,sans-serif;font-weight:500;font-size:cl
 .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:10px;background:var(--gold);color:#1a1404;font-weight:600;text-decoration:none}
 .btn.ghost{background:transparent;color:#fff;border:1px solid color-mix(in srgb,#fff 45%,transparent);overflow-wrap:anywhere}
 .btn:hover,.btn:focus-visible{filter:brightness(1.08);outline:2px solid #fff;outline-offset:2px}
+.portrait{position:relative;width:clamp(140px,13vw,184px);aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:4px solid #F6E6E0;background:#F6E6E0;display:grid;place-items:center;align-self:end;box-shadow:8px 8px 0 var(--gold)}
+.portrait span{font-family:Fraunces,Georgia,serif;font-weight:650;font-size:46px;color:#7A1025}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.albums{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px}
+.alb h3{font-size:20px;margin:0}
+.alb .meta{color:var(--soft);font-size:15px;margin:2px 0 12px}
+.car{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#F6E6E0;touch-action:pan-y;outline-offset:3px}
+.car:focus-visible{outline:3px solid var(--gold)}
+.track{display:flex;height:100%;transition:transform .45s ease}
+.slide{flex:0 0 100%;height:100%;position:relative}
+.slide img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none}
+.ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:#7A1025;font-size:14px}
+.ph svg{display:block;margin:0 auto 8px}
+.cbtn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#7A1025;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(31,26,28,.25)}
+.cbtn:hover,.cbtn:focus-visible{background:var(--gold);color:#1F1A1C;outline:none}
+.prev{left:10px}.next{right:10px}
+.count{position:absolute;right:12px;bottom:12px;background:rgba(31,26,28,.72);color:#fff;font-size:13px;padding:2px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
+.cap{margin:10px 0 4px;font-size:15px;color:var(--soft);min-height:1.6em}
+.dots{display:flex;flex-wrap:wrap;gap:2px}
+.dots button{width:26px;height:26px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.dots button::after{content:"";width:9px;height:9px;border-radius:5px;background:#C7A9A0;transition:width .2s}
+.dots button[aria-current=true]::after{background:#7A1025;width:20px}
+@media(prefers-reduced-motion:reduce){.track{transition:none}}
 .field{position:relative;height:clamp(220px,30vw,360px);display:block}
 .field svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 .spike{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6s ease-in-out infinite alternate}
@@ -90,7 +113,8 @@ footer h2{color:#fff}
 .ahead h2{color:var(--head)}
 .contact a{display:inline-flex;align-items:center;min-height:44px;color:#fff;text-decoration-color:var(--gold);text-underline-offset:5px;font-weight:500}
 .small{font-size:13.5px;opacity:.75;margin-top:24px}
-@media(max-width:900px){header .top{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:900px){header .top{grid-template-columns:auto minmax(0,1fr)}header .top>.side{grid-column:1/-1}}
+@media(max-width:600px){header .top{grid-template-columns:minmax(0,1fr)}.portrait{width:132px}}
 @media(max-width:700px){.cols{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:600px){nav a.l{font-size:14px}.list li{grid-template-columns:minmax(0,1fr);gap:2px}}
 </style>
@@ -102,14 +126,16 @@ footer h2{color:#fff}
 <a class="l" href="#outputs">Presentations</a>
 <a class="l" href="#education">Education</a>
 <a class="l" href="#methods">Skills</a>
+<a class="l" href="#album">Album</a>
 <a class="l" href="#contact">Contact</a>
 </div></nav>
 
 <header id="top">
 <div class="band wrap" style="padding-bottom:8px">
 <div class="top">
+<div class="portrait"><span>DW</span><img id="pimg" alt="Portrait of Dokyung Won" hidden></div>
 <h1>Dokyung Won<span class="ko">원도경 · M.S. student, Department of Plant Biotechnology, Korea University</span></h1>
-<div>
+<div class="side">
 <p class="pitch">I study how <strong>wheat</strong> responds to heat and disease, from a heat-responsive <strong>PUB E3 ubiquitin ligase</strong> that shapes the shift to flowering to the host response to <strong>Fusarium head blight</strong>.</p>
 <p class="aff">CMBT Lab · Advisor: Prof. Yongweon Seo</p>
 <span class="status"><i></i>Applying to PhD programs for Fall 2027</span>
@@ -196,6 +222,12 @@ footer h2{color:#fff}
 </div>
 </div></section>
 
+<section class="band" id="album" style="padding-top:0"><div class="wrap">
+<h2>Album</h2>
+<p class="lede">Moments from my studies and work. Use the arrows or swipe to browse.</p>
+<div class="albums" id="albums"></div>
+</div></section>
+
 <section class="band ahead" id="ahead"><div class="wrap cols">
 <div>
 <h2>Looking ahead</h2>
@@ -219,6 +251,7 @@ footer h2{color:#fff}
 </div>
 </div></footer>
 
+<script src="album.js"></script>
 <script>
 {
 const s=document.getElementById('fieldsvg');
@@ -244,6 +277,40 @@ for(let i=0;i<r.n;i++){const x=(i+rnd()*.8)*(W/r.n);const k=r.sc*(.85+rnd()*.3);
 out+=`<g transform="translate(${x.toFixed(1)} ${r.y}) scale(${k.toFixed(2)})" opacity="${r.op}"><use href="#sp" class="spike" style="animation-delay:-${d}s"/></g>`;}
 });
 s.innerHTML=out;
+}
+</script>
+<script>
+{
+const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pimg=document.getElementById('pimg');
+pimg.addEventListener('load',()=>{pimg.hidden=false});
+pimg.addEventListener('error',()=>pimg.remove());
+pimg.src=window.PROFILE_PHOTO||'images/profile.jpg';
+const icon='<svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#7A1025" stroke-width="2"><rect x="4" y="8" width="32" height="24" rx="3"/><circle cx="14" cy="17" r="3"/><path d="M6 30l10-9 7 6 5-4 8 7"/></svg>';
+window.photoMissing=img=>{const d=document.createElement('div');d.className='ph';d.innerHTML='<div>'+icon+'Photo not uploaded yet<br>'+esc(img.getAttribute('src'))+'</div>';img.replaceWith(d)};
+const A=(window.ALBUMS||[]).filter(a=>a&&Array.isArray(a.photos)&&a.photos.length);
+const box=document.getElementById('albums');
+if(!A.length){document.getElementById('album').hidden=true}
+box.innerHTML=A.map(a=>`<article class="alb"><h3>${esc(a.title)}</h3><p class="meta">${esc([a.place,a.date].filter(Boolean).join(' · '))}</p>
+<div class="car" tabindex="0" role="region" aria-roledescription="carousel" aria-label="${esc(a.title)}">
+<div class="track">${a.photos.map(p=>`<div class="slide"><img src="${esc(p.file)}" alt="${esc(p.caption)}" loading="lazy" draggable="false" onerror="photoMissing(this)"></div>`).join('')}</div>
+${a.photos.length>1?'<button class="cbtn prev" type="button" aria-label="Previous photo">&#8249;</button><button class="cbtn next" type="button" aria-label="Next photo">&#8250;</button>':''}
+<span class="count"></span></div>
+<p class="cap" aria-live="polite"></p>
+<div class="dots">${a.photos.length>1?a.photos.map((_,i)=>`<button type="button" aria-label="Photo ${i+1}"></button>`).join(''):''}</div></article>`).join('');
+box.querySelectorAll('.alb').forEach((el,ai)=>{
+const ph=A[ai].photos,n=ph.length;let i=0;
+const tr=el.querySelector('.track'),cap=el.querySelector('.cap'),cnt=el.querySelector('.count'),dots=[...el.querySelectorAll('.dots button')],car=el.querySelector('.car');
+const go=k=>{i=(k+n)%n;tr.style.transform=`translateX(${-i*100}%)`;cap.textContent=ph[i].caption||'';cnt.textContent=`${i+1} / ${n}`;dots.forEach((d,j)=>d.setAttribute('aria-current',j===i))};
+el.querySelector('.prev')?.addEventListener('click',()=>go(i-1));
+el.querySelector('.next')?.addEventListener('click',()=>go(i+1));
+dots.forEach((d,j)=>d.addEventListener('click',()=>go(j)));
+car.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(i-1);if(e.key==='ArrowRight')go(i+1)});
+let x0=null;
+car.addEventListener('pointerdown',e=>{if(!e.target.closest('button'))x0=e.clientX});
+car.addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>40)go(dx<0?i+1:i-1)});
+go(0);
+});
 }
 </script>
 </body>
