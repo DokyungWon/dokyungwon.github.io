@@ -288,20 +288,28 @@ pimg.addEventListener('error',()=>pimg.remove());
 pimg.src=window.PROFILE_PHOTO||'images/profile.jpg';
 const icon='<svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#7A1025" stroke-width="2"><rect x="4" y="8" width="32" height="24" rx="3"/><circle cx="14" cy="17" r="3"/><path d="M6 30l10-9 7 6 5-4 8 7"/></svg>';
 window.photoMissing=img=>{const d=document.createElement('div');d.className='ph';d.innerHTML='<div>'+icon+'Photo not uploaded yet<br>'+esc(img.getAttribute('src'))+'</div>';img.replaceWith(d)};
-const A=(window.ALBUMS||[]).filter(a=>a&&Array.isArray(a.photos)&&a.photos.length);
+const exts=/\.(jpe?g|png|webp|gif)$/i;
+const nat=(x,y)=>x.localeCompare(y,undefined,{numeric:true,sensitivity:'base'});
+const h=location.hostname;
+const gh=h.endsWith('.github.io')?{owner:h.split('.')[0],repo:h}:null;
+const fromApi=async f=>{const r=await fetch(`https://api.github.com/repos/${gh.owner}/${gh.repo}/contents/${f}`);if(r.status===404)return[];if(!r.ok)throw 0;return(await r.json()).filter(x=>x.type==='file'&&exts.test(x.name)).map(x=>x.name).sort(nat)};
+const probe=src=>new Promise(res=>{const im=new Image();im.onload=()=>res(true);im.onerror=()=>res(false);im.src=src});
+const fromProbe=async f=>{const out=[];for(let i=1;i<=60;i++){let hit=null;for(const e of['jpg','jpeg','png','JPG','PNG']){if(await probe(`${f}/${i}.${e}`)){hit=`${i}.${e}`;break}}if(!hit)break;out.push(hit)}return out};
+const list=async f=>{if(gh){try{return await fromApi(f)}catch(e){}}return fromProbe(f)};
 const box=document.getElementById('albums');
-if(!A.length){document.getElementById('album').hidden=true}
-box.innerHTML=A.map(a=>`<article class="alb"><h3>${esc(a.title)}</h3><p class="meta">${esc([a.place,a.date].filter(Boolean).join(' · '))}</p>
+const build=(a,names)=>{const ph=names.map(n=>({file:`${a.folder}/${n}`,caption:(a.captions||{})[n]||''}));
+if(!ph.length)ph.push({file:`${a.folder}/1.jpg`,caption:''});
+const el=document.createElement('article');el.className='alb';
+el.innerHTML=`<h3>${esc(a.title)}</h3><p class="meta">${esc([a.place,a.date].filter(Boolean).join(' · '))}</p>
 <div class="car" tabindex="0" role="region" aria-roledescription="carousel" aria-label="${esc(a.title)}">
-<div class="track">${a.photos.map(p=>`<div class="slide"><img src="${esc(p.file)}" alt="${esc(p.caption)}" loading="lazy" draggable="false" onerror="photoMissing(this)"></div>`).join('')}</div>
-${a.photos.length>1?'<button class="cbtn prev" type="button" aria-label="Previous photo">&#8249;</button><button class="cbtn next" type="button" aria-label="Next photo">&#8250;</button>':''}
+<div class="track">${ph.map(p=>`<div class="slide"><img src="${esc(p.file)}" alt="${esc(p.caption||a.title)}" loading="lazy" draggable="false" onerror="photoMissing(this)"></div>`).join('')}</div>
+${ph.length>1?'<button class="cbtn prev" type="button" aria-label="Previous photo">&#8249;</button><button class="cbtn next" type="button" aria-label="Next photo">&#8250;</button>':''}
 <span class="count"></span></div>
 <p class="cap" aria-live="polite"></p>
-<div class="dots">${a.photos.length>1?a.photos.map((_,i)=>`<button type="button" aria-label="Photo ${i+1}"></button>`).join(''):''}</div></article>`).join('');
-box.querySelectorAll('.alb').forEach((el,ai)=>{
-const ph=A[ai].photos,n=ph.length;let i=0;
+<div class="dots">${ph.length>1&&ph.length<=15?ph.map((_,i)=>`<button type="button" aria-label="Photo ${i+1}"></button>`).join(''):''}</div>`;
+const n=ph.length;let i=0;
 const tr=el.querySelector('.track'),cap=el.querySelector('.cap'),cnt=el.querySelector('.count'),dots=[...el.querySelectorAll('.dots button')],car=el.querySelector('.car');
-const go=k=>{i=(k+n)%n;tr.style.transform=`translateX(${-i*100}%)`;cap.textContent=ph[i].caption||'';cnt.textContent=`${i+1} / ${n}`;dots.forEach((d,j)=>d.setAttribute('aria-current',j===i))};
+const go=k=>{i=(k+n)%n;tr.style.transform=`translateX(${-i*100}%)`;cap.textContent=ph[i].caption;cnt.textContent=`${i+1} / ${n}`;dots.forEach((d,j)=>d.setAttribute('aria-current',j===i))};
 el.querySelector('.prev')?.addEventListener('click',()=>go(i-1));
 el.querySelector('.next')?.addEventListener('click',()=>go(i+1));
 dots.forEach((d,j)=>d.addEventListener('click',()=>go(j)));
@@ -309,8 +317,10 @@ car.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(i-1);if(e.key==='Ar
 let x0=null;
 car.addEventListener('pointerdown',e=>{if(!e.target.closest('button'))x0=e.clientX});
 car.addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>40)go(dx<0?i+1:i-1)});
-go(0);
-});
+go(0);return el};
+const A=(window.ALBUMS||[]).filter(a=>a&&a.folder);
+if(!A.length)document.getElementById('album').hidden=true;
+Promise.all(A.map(a=>list(a.folder).catch(()=>[]))).then(all=>{A.forEach((a,k)=>box.appendChild(build(a,all[k])))});
 }
 </script>
 </body>
