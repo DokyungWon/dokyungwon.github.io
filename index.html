@@ -64,12 +64,12 @@ h1 .ko{display:block;font-family:Figtree,sans-serif;font-weight:500;font-size:cl
 .alb{flex:0 0 min(560px,86%);scroll-snap-align:start}
 .alb h3{font-size:20px;margin:0}
 .alb .meta{color:var(--soft);font-size:15px;margin:2px 0 12px}
-.car{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#F6E6E0;touch-action:pan-y;outline-offset:3px}
+.car{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:transparent;touch-action:pan-y;outline-offset:3px}
 .car:focus-visible{outline:3px solid var(--gold)}
 .track{display:flex;height:100%;transition:transform .45s ease}
 .slide{flex:0 0 100%;height:100%;position:relative}
-.slide img{width:100%;height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
-.ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:#7A1025;font-size:14px}
+.slide img{width:100%;height:100%;object-fit:contain;border-radius:10px;display:block;user-select:none;-webkit-user-drag:none}
+.ph{position:absolute;inset:0;background:#F6E6E0;border-radius:14px;display:grid;place-items:center;text-align:center;padding:20px;color:#7A1025;font-size:14px}
 .ph svg{display:block;margin:0 auto 8px}
 .cbtn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#7A1025;font-size:26px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(31,26,28,.25)}
 .cbtn:hover,.cbtn:focus-visible{background:var(--gold);color:#1F1A1C;outline:none}
