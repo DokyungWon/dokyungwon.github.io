@@ -143,21 +143,37 @@ header{background:var(--bg);color:var(--ink)}
 .addr a{color:#7A1025}
 header .field{height:clamp(160px,20vw,260px)}
 @media(max-width:760px){.about{grid-template-columns:minmax(0,1fr)}.pcol{order:-1;display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:end}.addr{margin:0}}
+.pcol .portrait{overflow:visible;background:none}
+.pcol .portrait span{position:absolute;inset:0;display:grid;place-items:center;background:#F6E6E0;border-radius:12px}
+.pcol .portrait img{border-radius:12px}
+.portrait.flip span{display:none}
+.portrait.flip img{border:5px solid #fff;box-shadow:0 6px 18px rgba(31,26,28,.18)}
+.portrait.flip .pb{z-index:1;transform-origin:50% 60%;transform:rotate(calc(-4deg + var(--t,0)*4deg)) scale(calc(.9 + var(--t,0)*.1))}
+.portrait.flip .pa{z-index:2;transform-origin:30% 100%;transform:translateX(calc(min(var(--t,0)*2,2 - var(--t,0)*2)*57%*var(--k,1))) rotate(calc(min(var(--t,0)*2,2 - var(--t,0)*2)*8deg*var(--k,1)))}
+.portrait.flip.behind .pa{z-index:0;opacity:calc(1 - var(--t,0)*.6)}
+@media(max-width:760px){.about{grid-template-columns:minmax(0,1fr)}.pcol{display:block}.pcol .portrait{width:min(200px,52vw)}.addr{margin-top:14px}}
+@media(prefers-reduced-motion:reduce){.portrait.flip .pb{display:none}.portrait.flip .pa{transform:none}}
+.pinwrap.on::after{content:"";display:block;height:var(--pin,70vh)}
+.pinwrap.on .pinned{position:sticky;top:var(--navh,68px);background:var(--bg);z-index:1}
+@media(prefers-reduced-motion:reduce){.pinwrap.on::after{display:none}.pinwrap.on .pinned{position:static}}
+header .field{height:clamp(150px,15vw,260px)}
+@media(min-width:761px){.pinned{padding-top:clamp(24px,3vw,40px);padding-bottom:20px}.affil{margin:10px 0 18px}.bio p:not(.affil){font-size:16.5px;line-height:1.6;margin-bottom:12px}.bio .status{margin-top:2px}.cta{margin-top:14px}}
+header.peek .field{position:sticky;z-index:2;bottom:calc(var(--peek,96px) - var(--fh,220px))}
 </style>
 </head>
 <body>
 <nav><div class="wrap">
 <a class="me" href="#top">Dokyung Won</a>
 <a class="l" href="#research">Research</a>
-<a class="l" href="#outputs">Presentations</a>
 <a class="l" href="#education">Education</a>
 <a class="l" href="#methods">Skills</a>
+<a class="l" href="#outputs">Presentations</a>
 <a class="l" href="#album">Album</a>
 <a class="l" href="#contact">Contact</a>
 </div></nav>
 
 <header id="top">
-<div class="band"><div class="about">
+<div class="pinwrap" id="pinwrap"><div class="band pinned"><div class="about">
 <div class="bio">
 <h1 class="nm"><b>Dokyung</b> <b>Won</b></h1>
 <p class="affil"><a href="https://www.korea.ac.kr">Korea University</a> · Department of Plant Biotechnology · CMBT (Crop Molecular Breeding Team) · M.S. student</p>
@@ -165,14 +181,14 @@ header .field{height:clamp(160px,20vw,260px)}
 <p>My main project is the functional characterization of a heat-responsive <strong>PUB E3 ubiquitin ligase</strong> involved in the shift from vegetative growth to flowering. I also work on the host response to <strong>Fusarium head blight</strong> and help run heat-stress field trials on winter cereals.</p>
 <p>I earned my B.S. in Biotechnology at Korea University and spent an exchange semester studying biology at the University of Sussex in the UK. I am now looking for PhD programs in wheat genetics and plant pathology for Fall 2027.</p>
 <span class="status"><i></i>Looking for PhD programs for Fall 2027</span>
-<div class="cta"><a class="btn" href="cv.pdf">Download CV</a><a class="btn ghost" href="mailto:wdk0610@korea.ac.kr">Email me</a></div>
+<div class="cta"><a class="btn" href="CV/CV_Dokyung%20Won_Korea%20University.pdf" download="CV_Dokyung Won_Korea University.pdf">Download CV</a></div>
 </div>
 <aside class="pcol">
-<div class="portrait"><span>DW</span><img id="pimg" alt="Portrait of Dokyung Won" hidden></div>
+<div class="portrait"><span>DW</span><img id="pimg2" class="pb" alt="Dokyung Won in the wheat field" hidden><img id="pimg" class="pa" alt="Portrait of Dokyung Won" hidden></div>
 <p class="addr">CMBT Lab, Dept. of Plant Biotechnology<br>Life Sciences Bldg. (West), Rm. 514<br>Korea University, 145 Anam-ro<br>Seongbuk-gu, Seoul, Republic of Korea<br><a href="mailto:wdk0610@korea.ac.kr">wdk0610@korea.ac.kr</a></p>
 </aside>
-</div></div>
-<div class="field" aria-hidden="true"><svg id="fieldsvg" preserveAspectRatio="xMidYMax slice" viewBox="0 0 1440 360"></svg></div>
+</div></div></div>
+<div class="field" aria-hidden="true"><svg id="fieldsvg" preserveAspectRatio="xMidYMin slice" viewBox="0 90 1440 270"></svg></div>
 </header>
 
 <main>
@@ -198,24 +214,6 @@ header .field{height:clamp(160px,20vw,260px)}
 <p>I support two field programs: setting damage criteria for abnormal temperatures across growth stages of winter cereals, where I help run high-temperature treatments, and seed genetic resource conservation, where I help cultivate accessions and record traits. In the lab, I am planning a heat time-course in wheat seedlings to follow when stress-responsive genes switch on and off.</p>
 <ul class="chips"><li>Field trials</li><li>Trait characterization</li><li>Time-course design</li></ul>
 </article>
-</div>
-</div></section>
-
-<section class="band" id="outputs" style="padding-top:0"><div class="wrap cols">
-<div>
-<h2>Presentations &amp; writing</h2>
-<ul class="list">
-<li><span class="when">Jul 2026</span><div><b>Functional characterization of a heat-responsive PUB E3 ubiquitin ligase involved in the early vegetative-to-reproductive transition in wheat</b><span class="d">Poster, Korean Society of Breeding Science conference, Busan</span></div></li>
-<li><span class="when">In preparation</span><div><b>Review of E3 ubiquitin ligases in wheat</b><span class="d">Co-author. I wrote the chapters on classification and genome distribution, abiotic stress, and flowering and reproductive development.</span></div></li>
-<li><span class="when">In preparation</span><div><b>Research article on the heat-responsive PUB E3 ligase</b><span class="d">First draft in progress.</span></div></li>
-</ul>
-</div>
-<div>
-<h2>Seminar talks</h2>
-<ul class="list">
-<li><span class="when">Nov 2026</span><div><b>New plant breeding techniques: from NPBT to NGT</b><span class="d">Applied Plant Genetic Engineering (PBG811), Korea University</span></div></li>
-<li><span class="when">Nov 2026</span><div><b>Synthetic biology for plants</b><span class="d">Applied Plant Genetic Engineering (PBG811), Korea University</span></div></li>
-</ul>
 </div>
 </div></section>
 
@@ -248,6 +246,22 @@ header .field{height:clamp(160px,20vw,260px)}
 <div><h3>Imaging and culture</h3><p>Bright-field and confocal microscopy, cell culture.</p></div>
 <div><h3>Teaching and outreach</h3><p>TA for Man and Food (GEST045), 2025; career mentoring for secondary-school students; language and culture assistant for Ritsumeikan University visitors.</p></div>
 <div><h3>Languages and certificates</h3><p>TOEFL iBT 5.0 / 6.0 (2026), IELTS 7.0 (2023); Engineer Seeds, HRD Korea (2025).</p></div>
+</div>
+</div></section>
+
+<section class="band" id="outputs" style="padding-top:0"><div class="wrap cols">
+<div>
+<h2>Presentations</h2>
+<ul class="list">
+<li><span class="when">Jul 2026</span><div><b>Functional characterization of a heat-responsive PUB E3 ubiquitin ligase involved in the early vegetative-to-reproductive transition in wheat</b><span class="d">Poster, Korean Society of Breeding Science conference, Busan</span></div></li>
+</ul>
+</div>
+<div>
+<h2>Writing</h2>
+<ul class="list">
+<li><span class="when">In preparation</span><div><b>Review of E3 ubiquitin ligases in wheat</b><span class="d">Co-author. I wrote the chapters on classification and genome distribution, abiotic stress, and flowering and reproductive development.</span></div></li>
+<li><span class="when">In preparation</span><div><b>Research article on the heat-responsive PUB E3 ligase</b><span class="d">First draft in progress.</span></div></li>
+</ul>
 </div>
 </div></section>
 
@@ -296,9 +310,9 @@ ${Array.from({length:9},(_,i)=>{const y=-118-i*7.5;return `<ellipse cx="-4.5" cy
 ${Array.from({length:6},(_,i)=>{const y=-130-i*10;return `<path d="M-6 ${y} l-12 -26 M6 ${y-3} l12 -26" stroke="#e8c879" stroke-width=".9"/>`}).join('')}
 <path d="M0 -40 C -14 -60 -30 -66 -42 -64 C -28 -58 -14 -50 0 -30" fill="#b07d1a"/>
 </g></defs>
-<rect width="${W}" height="${H}" fill="url(#sky)"/>
-<circle cx="1150" cy="96" r="150" fill="url(#sun)" opacity=".9"/>
-<circle cx="1150" cy="96" r="46" fill="#FFE8A3"/>
+<rect y="90" width="${W}" height="270" fill="url(#sky)"/>
+<circle cx="1150" cy="140" r="125" fill="url(#sun)" opacity=".9"/>
+<circle cx="1150" cy="140" r="36" fill="#FFE8A3"/>
 ${[0,1,2].map(i=>`<path d="M${880+i*40} ${150+i*16} q 30 -10 60 0 t 60 0 t 60 0 t 60 0" fill="none" stroke="#FFE8A3" stroke-opacity="${.35-i*.08}" stroke-width="2"/>`).join('')}`;
 const rows=[{y:250,n:46,sc:.55,op:.55},{y:300,n:38,sc:.75,op:.8},{y:365,n:30,sc:1,op:1}];
 rows.forEach((r,ri)=>{
@@ -312,10 +326,20 @@ s.innerHTML=out;
 <script>
 {
 const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const pimg=document.getElementById('pimg');
+const pimg=document.getElementById('pimg'),pimg2=document.getElementById('pimg2'),pbox=pimg.parentElement;
 pimg.addEventListener('load',()=>{pimg.hidden=false});
 pimg.addEventListener('error',()=>pimg.remove());
 pimg.src=window.PROFILE_PHOTO||'images/profile.jpg';
+const pease=x=>x<.5?2*x*x:1-((-2*x+2)**2)/2;
+const pin=document.getElementById('pinwrap'),pband=pin.querySelector('.pinned'),navEl=document.querySelector('nav');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hdr=document.getElementById('top'),fld=hdr.querySelector('.field'),cta=hdr.querySelector('.cta');
+const fitPeek=()=>{hdr.classList.remove('peek');if(innerWidth<=760||reduce||!pin.classList.contains('on'))return;const nav=navEl.offsetHeight;const bottom=cta.getBoundingClientRect().bottom+scrollY;const room=innerHeight-(bottom-Math.min(scrollY,pin.offsetHeight-pband.offsetHeight))-16;if(room<60)return;hdr.style.setProperty('--peek',Math.min(room,fld.offsetHeight)+'px');hdr.style.setProperty('--fh',fld.offsetHeight+'px');hdr.classList.add('peek')};
+const pcolEl=pbox.parentElement;
+const pflip=()=>{document.documentElement.style.setProperty('--navh',navEl.offsetHeight+'px');{const w=pbox.offsetWidth,h=pbox.offsetHeight,avail=document.documentElement.clientWidth-pcolEl.getBoundingClientRect().right-10;pbox.style.setProperty('--k',Math.min(1,Math.max(.25,avail/(w*.57+h*.14))).toFixed(3))}pin.style.setProperty('--pin',(innerWidth>760?75:60)+'vh');const len=Math.max(1,pin.offsetHeight-pband.offsetHeight);const p=Math.min(1,Math.max(0,scrollY/len));const t=pease(Math.min(1,p/.75));pbox.style.setProperty('--t',t.toFixed(4));pbox.classList.toggle('behind',t>.5)};
+pimg2.addEventListener('load',()=>{if(!pimg.isConnected)return;pimg2.hidden=false;pbox.classList.add('flip');if(!reduce)pin.classList.add('on');fitPeek();addEventListener('resize',fitPeek);let r=0;addEventListener('scroll',()=>{if(!r)r=requestAnimationFrame(()=>{r=0;pflip()})},{passive:true});addEventListener('resize',pflip);pflip()});
+pimg2.addEventListener('error',()=>pimg2.remove());
+if(window.PROFILE_PHOTO_FIELD)pimg2.src=window.PROFILE_PHOTO_FIELD;else pimg2.remove();
 const icon='<svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#7A1025" stroke-width="2"><rect x="4" y="8" width="32" height="24" rx="3"/><circle cx="14" cy="17" r="3"/><path d="M6 30l10-9 7 6 5-4 8 7"/></svg>';
 window.photoMissing=img=>{const d=document.createElement('div');d.className='ph';d.innerHTML='<div>'+icon+'Photo not uploaded yet<br>'+esc(img.getAttribute('src'))+'</div>';img.replaceWith(d)};
 const exts=/\.(jpe?g|png|webp|gif)$/i;

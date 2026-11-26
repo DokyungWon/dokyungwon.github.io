@@ -9,6 +9,9 @@
 // 1) 첫 화면 프로필 사진
 window.PROFILE_PHOTO = "images/profile.jpg";
 
+// 1-2) 스크롤하면 프로필 사진이 이 사진으로 바뀌어요. 파일이 없으면 증명사진만 보여요.
+window.PROFILE_PHOTO_FIELD = "images/profile-field.jpg";
+
 // 2) Album
 //    folder   : 사진을 넣을 폴더 (이 폴더 안의 jpg/png 사진이 모두 표시됨)
 //    captions : 사진 아래 설명(선택). "파일 이름": "설명" 형식으로 적어요.
