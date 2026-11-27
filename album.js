@@ -32,7 +32,7 @@ window.ALBUMS = [
     date: "2025 – present",
     folder: "images/fieldwork",
     captions: {
-      "1.jpg": "Wheat plots during the high-temperature treatment trial.",
+      "1.jpg": "Sowing wheat seeds in the field.",
     },
   },
   {
@@ -41,7 +41,17 @@ window.ALBUMS = [
     date: "2026",
     folder: "images/conference",
     captions: {
-      "1.jpg": "Presenting my poster on a heat-responsive PUB E3 ubiquitin ligase.",
+      "1.jpg": "Presenting my first poster on a heat-responsive PUB E3 ubiquitin ligase.",
+    },
+  },
+  {
+    title: "Advising",
+    place: "Korea University, Seoul",
+    date: "2025",
+    folder: "images/advising",
+    captions: {
+      "1.jpg": "Mentoring middle and high school students (Aug 2025).",
+      "2.jpg": "Helping exchange students from all around the world settle in at Korea University (Spring 2025).",
     },
   },
 ];
